@@ -8,5 +8,9 @@
 *.log
 *.log.*
 
-/target/
-/bin/
+.classpath
+.project
+
+.settings/
+target/
+bin/
