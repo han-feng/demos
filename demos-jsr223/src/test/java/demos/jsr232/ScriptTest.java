@@ -3,14 +3,15 @@ package demos.jsr232;
 import java.math.BigDecimal;
 
 import javax.script.Bindings;
+import javax.script.Compilable;
+import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -99,13 +100,13 @@ public class ScriptTest {
 			logger.info("\t\tMimeTypes: {}", factory.getMimeTypes());
 			logger.info("\t\tExtensions: {}", factory.getExtensions());
 
-			// if (factory.getScriptEngine() instanceof Compilable) {
-			// logger.info("\t\tSupport compilation.");
-			// }
-			//
-			// if (factory.getScriptEngine() instanceof Invocable) {
-			// logger.info("\t\tSupport invocation.");
-			// }
+			if (factory.getScriptEngine() instanceof Compilable) {
+				logger.info("\t\tSupport compilation.");
+			}
+
+			if (factory.getScriptEngine() instanceof Invocable) {
+				logger.info("\t\tSupport invocation.");
+			}
 
 		}
 	}
