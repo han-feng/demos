@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	    <groupId>demos</groupId>
-	    <artifactId>demos</artifactId>
-	    <version>0.0.1-SNAPSHOT</version>
+		<groupId>demos</groupId>
+		<artifactId>demos</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>demos-jsr223</artifactId>
@@ -48,8 +48,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.9</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

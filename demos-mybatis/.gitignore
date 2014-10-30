@@ -1,0 +1,16 @@
+
+*.class
+*.war
+*.zip
+*.rar
+*.idea
+*.iml
+*.log
+*.log.*
+
+.classpath
+.project
+
+.settings/
+target/
+bin/
