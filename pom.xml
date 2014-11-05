@@ -13,23 +13,26 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<webserver.port>8181</webserver.port>
 
 		<!-- version setting -->
+		<jdk.version>1.6</jdk.version>
+
 		<spring.version>3.2.11.RELEASE</spring.version>
 		<druid.version>1.0.9</druid.version>
 
 		<h2.version>1.4.182</h2.version>
 		<junit.version>4.11</junit.version>
 
-	</properties>
+		<tomcat.version>2.2</tomcat.version>
+		<jetty.version>8.1.16.v20140903</jetty.version>
 
-	<build>
-		<finalName>demos</finalName>
-	</build>
+	</properties>
 
 	<modules>
 		<module>demos-jsr223</module>
 		<module>demos-mybatis</module>
+		<module>demos-druid</module>
 	</modules>
 
 	<dependencyManagement>
@@ -102,5 +105,23 @@
 
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<verbose>true</verbose>
+						<fork>true</fork>
+						<target>${jdk.version}</target>
+						<source>${jdk.version}</source>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 </project>

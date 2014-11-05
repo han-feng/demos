@@ -64,20 +64,4 @@
 		</repository>
 	</repositories>
 
-	<build>
-		<defaultGoal>install</defaultGoal>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<target>1.6</target>
-					<source>1.6</source>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>

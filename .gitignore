@@ -1,16 +1,16 @@
+# Maven
+target/
 
-*.class
-*.war
-*.zip
-*.rar
-*.idea
-*.iml
-*.log
-*.log.*
-
+# Eclipse
 .classpath
 .project
-
 .settings/
-target/
-bin/
+.externalToolBuilders/
+
+# IDEA
+*.idea
+*.iml
+
+# log
+*.log
+*.log.*
