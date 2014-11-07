@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import demos.mybatis.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-context.xml")
+@ContextConfiguration(locations = "classpath:spring-context-demos-mybatis.xml")
 @ActiveProfiles("test")
 public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
