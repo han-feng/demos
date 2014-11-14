@@ -38,6 +38,19 @@
 	<dependencyManagement>
 		<dependencies>
 
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+
 			<!-- spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -118,6 +131,54 @@
 						<fork>true</fork>
 						<target>${jdk.version}</target>
 						<source>${jdk.version}</source>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<format>xml</format>
+						<maxmem>256m</maxmem>
+						<!-- aggregated reports for multi-module projects -->
+						<aggregate>true</aggregate>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.2.201409121644</version>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>com.github.timurstrekalov</groupId>
+					<artifactId>saga-maven-plugin</artifactId>
+					<version>1.5.2</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>coverage</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<baseDir>http://localhost:8181</baseDir>
+						<outputDir>${project.build.directory}/saga-coverage</outputDir>
+						<noInstrumentPatterns>
+							<pattern>.*/spec/.*</pattern>
+						</noInstrumentPatterns>
 					</configuration>
 				</plugin>
 			</plugins>

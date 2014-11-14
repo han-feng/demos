@@ -1,12 +1,14 @@
 language: java
 jdk:
   - openjdk6
-  - openjdk7
-  - oraclejdk7
-  - oraclejdk8
+#  - openjdk7
+#  - oraclejdk7
+#  - oraclejdk8
 # whitelist
 branches:
   only:
     - master
 notifications:
   email: false
+after_success:
+  - mvn clean test jacoco:report saga:coverage cobertura:cobertura coveralls:report
