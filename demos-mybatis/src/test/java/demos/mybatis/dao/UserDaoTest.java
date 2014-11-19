@@ -33,7 +33,7 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 			user.setName("User" + i);
 			user.setLoginName("user" + i);
 			user.setEmail("user" + i + "@test.com");
-			Assert.assertEquals(1, userDao.save(user));
+			Assert.assertEquals(1, userDao.add(user));
 		}
 
 		for (int i = 0; i < 100; i++) {

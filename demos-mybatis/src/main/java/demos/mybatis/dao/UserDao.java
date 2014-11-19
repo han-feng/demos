@@ -10,7 +10,7 @@ public interface UserDao {
 
 	List<User> find(User user);
 
-	int save(User user);
+	int add(User user);
 
 	int update(User user);
 

@@ -1,0 +1,56 @@
+package org.demos.drools.cep
+
+import java.util.*
+
+dialect "mvel"
+
+declare EventFact
+    @role( event )
+    @expires( 2s )
+end
+
+global Map result
+
+rule "test1: avg(s1)"
+when
+	$n:Number(doubleValue > 0.3) from accumulate( EventFact(subjectId=="S1" , $v:value ) over window:time(1s) , average( $v ) ) 
+then
+	result.put("test1",$n);
+end
+
+rule "test2: max(st1)"
+when
+	$n:Number() from accumulate( EventFact(subjectTypeId=="ST1" , $v:value ) over window:time(1s) , max( $v ) ) 
+then
+	result.put("test2",$n);
+end
+
+rule "test3: min_all"
+when
+	$n:Number() from accumulate( EventFact($v:value ) over window:time(1s) , min( $v ) ) 
+then
+	result.put("test3",$n);
+end
+
+rule "test4: accumulate"
+when
+	$s:HashSet( empty==false ) from
+		accumulate(
+			$fact:EventFact() over window:time(1s) ,
+			init(
+				Set set = new HashSet();
+			),
+			action(
+				if( $fact.value > 7.0 ) set.add( $fact );
+			),
+			reverse(
+				if( set.contains($fact) ) set.remove( $fact );
+			),
+			result(
+				set;
+			)
+		) 
+then
+	result.put("test4",$s.clone());
+end
+

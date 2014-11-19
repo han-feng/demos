@@ -21,7 +21,7 @@
 		</where>
 	</select>
 
-	<insert id="save">
+	<insert id="add">
 		insert into TEST_USER (ID,NAME,LOGINNAME,EMAIL)
 		values
 		(#{id},#{name},#{loginName},#{email})
