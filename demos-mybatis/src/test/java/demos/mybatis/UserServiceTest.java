@@ -1,4 +1,4 @@
-package demos.mybatis.dao;
+package demos.mybatis;
 
 import java.util.List;
 
@@ -12,19 +12,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import demos.mybatis.User;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath*:/spring-context*.xml")
 @ActiveProfiles("test")
-public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class UserServiceTest extends
+		AbstractTransactionalJUnit4SpringContextTests {
 
 	@Resource
-	private UserDao userDao;
+	private UserService userService;
 
 	@Test
 	public void testDao() {
-		User user = userDao.get(0);
+		User user = userService.getUser(0);
 		Assert.assertNull(user);
 
 		for (int i = 0; i < 100; i++) {
@@ -33,11 +32,11 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 			user.setName("User" + i);
 			user.setLoginName("user" + i);
 			user.setEmail("user" + i + "@test.com");
-			Assert.assertEquals(1, userDao.add(user));
+			Assert.assertEquals(1, userService.addUser(user));
 		}
 
 		for (int i = 0; i < 100; i++) {
-			user = userDao.get(i);
+			user = userService.getUser(i);
 			Assert.assertNotNull(user);
 			Assert.assertEquals(i, user.getId());
 			Assert.assertEquals("User" + i, user.getName());
@@ -49,9 +48,9 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 		user.setName("TestName");
 		user.setLoginName("TestLoginName");
 		user.setEmail("TestEmail");
-		Assert.assertEquals(1, userDao.update(user));
+		Assert.assertEquals(1, userService.updateUser(user));
 
-		user = userDao.get(50);
+		user = userService.getUser(50);
 		Assert.assertNotNull(user);
 		Assert.assertEquals(50, user.getId());
 		Assert.assertEquals("TestName", user.getName());
@@ -60,12 +59,12 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 		user = new User();
 		user.setName("ser");
-		List<User> list = userDao.find(user);
+		List<User> list = userService.findUser(user);
 		Assert.assertEquals(99, list.size());
 
 		user = new User();
 		user.setName("TestName");
-		list = userDao.find(user);
+		list = userService.findUser(user);
 		Assert.assertEquals(1, list.size());
 
 	}

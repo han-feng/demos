@@ -35,6 +35,16 @@
 			<artifactId>druid</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.github.briandilley.jsonrpc4j</groupId>
+			<artifactId>jsonrpc4j</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
@@ -49,44 +59,32 @@
 		<finalName>demos-druid</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>${tomcat.version}</version>
 				<configuration>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>${webserver.port}</port>
-						</connector>
-					</connectors>
-					<webAppConfig>
-						<contextPath>/${project.artifactId}</contextPath>
-					</webAppConfig>
-					<systemProperties>
-						<systemProperty>
-							<name>org.mortbay.util.URI.charset</name>
-							<value>${project.build.sourceEncoding}</value>
-						</systemProperty>
-					</systemProperties>
-					<stopPort>9966</stopPort>
-					<stopKey>stop-jetty-for-it</stopKey>
+					<port>${webserver.port}</port>
+					<path>/${project.artifactId}</path>
+					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+					<useTestClasspath>false</useTestClasspath>
 				</configuration>
 				<executions>
 					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
+						<id>tomcat-run</id>
 						<goals>
-							<goal>run</goal>
+							<goal>run-war</goal>
 						</goals>
+						<phase>pre-integration-test</phase>
 						<configuration>
-							<daemon>true</daemon>
+							<fork>true</fork>
 						</configuration>
 					</execution>
 					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
+						<id>tomcat-shutdown</id>
 						<goals>
-							<goal>stop</goal>
+							<goal>shutdown</goal>
 						</goals>
+						<phase>post-integration-test</phase>
 					</execution>
 				</executions>
 			</plugin>

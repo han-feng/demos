@@ -18,13 +18,12 @@
 		<!-- version setting -->
 		<jdk.version>1.6</jdk.version>
 
-		<spring.version>3.2.11.RELEASE</spring.version>
+		<spring.version>3.2.12.RELEASE</spring.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<druid.version>1.0.9</druid.version>
 		<h2.version>1.4.182</h2.version>
 		<junit.version>4.11</junit.version>
 		<tomcat.version>2.2</tomcat.version>
-		<jetty.version>8.1.16.v20140903</jetty.version>
 
 	</properties>
 
@@ -158,40 +157,7 @@
 					<configuration>
 						<format>xml</format>
 						<maxmem>256m</maxmem>
-						<!-- aggregated reports for multi-module projects -->
 						<aggregate>true</aggregate>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.7.2.201409121644</version>
-					<executions>
-						<execution>
-							<id>prepare-agent</id>
-							<goals>
-								<goal>prepare-agent</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>com.github.timurstrekalov</groupId>
-					<artifactId>saga-maven-plugin</artifactId>
-					<version>1.5.2</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>coverage</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<baseDir>http://localhost:8181</baseDir>
-						<outputDir>${project.build.directory}/saga-coverage</outputDir>
-						<noInstrumentPatterns>
-							<pattern>.*/spec/.*</pattern>
-						</noInstrumentPatterns>
 					</configuration>
 				</plugin>
 			</plugins>
