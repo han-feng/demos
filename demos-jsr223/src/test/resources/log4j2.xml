@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="error">
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%highlight{%d{HH:mm:ss.SSS} %c{1} [%level] %msg%n%throwable}" />
+		</Console>
+	</appenders>
+	<loggers>
+		<logger name="demos" level="debug" additivity="false">
+			<appender-ref ref="Console" />
+		</logger>
+		<root level="warn">
+			<appender-ref ref="Console" />
+		</root>
+	</loggers>
+</configuration> 

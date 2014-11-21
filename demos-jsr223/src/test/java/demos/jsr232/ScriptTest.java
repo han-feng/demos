@@ -11,11 +11,11 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 脚本引擎测试
@@ -25,8 +25,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ScriptTest {
 
-	private final static Logger logger = LoggerFactory
-			.getLogger(ScriptTest.class);
+	private final static Logger logger = LogManager.getLogger(ScriptTest.class);
 
 	private final static ScriptEngineManager manager = new ScriptEngineManager();
 
@@ -85,9 +84,8 @@ public class ScriptTest {
 
 	@BeforeClass
 	public static void init() {
-
 		// JavaFX Script, Groovy, JRuby, Jython, JavaScript, Scala, Clojure
-
+		logger.entry();
 		logger.info("当前支持的脚本引擎有：");
 		for (ScriptEngineFactory factory : manager.getEngineFactories()) {
 			logger.info("\t{} ({}):", factory.getEngineName(),
@@ -107,7 +105,7 @@ public class ScriptTest {
 			if (factory.getScriptEngine() instanceof Invocable) {
 				logger.info("\t\tSupport invocation.");
 			}
-
 		}
+		logger.exit();
 	}
 }
