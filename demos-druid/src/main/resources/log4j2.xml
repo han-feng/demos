@@ -2,12 +2,11 @@
 <configuration status="error">
 	<appenders>
 		<Console name="Console" target="SYSTEM_OUT">
-			<PatternLayout
-				pattern="%highlight{%d{HH:mm:ss.SSS} %c{1} [%level] %msg%n%throwable}" />
+			<PatternLayout pattern="%highlight{%d{ABSOLUTE} [%c{1}] %-5p %m%n%throwable}" />
 		</Console>
 	</appenders>
 	<loggers>
-		<logger name="demos" level="debug" additivity="false">
+		<logger name="demos" level="info" additivity="false">
 			<appender-ref ref="Console" />
 		</logger>
 		<root level="warn">
