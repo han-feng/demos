@@ -20,9 +20,9 @@ import org.junit.Test;
  */
 public class CompiledScriptTest {
 
-    private final static ScriptEngineManager MANAGER = new ScriptEngineManager();
+    private static final ScriptEngineManager MANAGER = new ScriptEngineManager();
 
-    private final static int MAX = 1000;
+    private static final int MAX = 1000;
 
     @Test
     public void testJavaScript() throws Exception {

@@ -25,9 +25,9 @@ import org.junit.Test;
  */
 public class ScriptTest {
 
-    private final static Logger LOG = LogManager.getLogger(ScriptTest.class);
+    private static final Logger LOG = LogManager.getLogger(ScriptTest.class);
 
-    private final static ScriptEngineManager MANAGER = new ScriptEngineManager();
+    private static final ScriptEngineManager MANAGER = new ScriptEngineManager();
 
     @Test
     public void testJavaScript() throws ScriptException {

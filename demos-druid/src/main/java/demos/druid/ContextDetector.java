@@ -8,14 +8,15 @@ import org.springframework.context.ApplicationContextAware;
 
 public class ContextDetector implements ApplicationContextAware {
 
-    private final static Logger LOG = LogManager
+    private static final Logger LOG = LogManager
             .getLogger(ContextDetector.class);
 
     @Override
     public void setApplicationContext(ApplicationContext ctx)
             throws BeansException {
-        if (ctx != null)
+        if (ctx != null) {
             printApplicationContext(ctx);
+        }
     }
 
     private static void printApplicationContext(ApplicationContext ctx) {
