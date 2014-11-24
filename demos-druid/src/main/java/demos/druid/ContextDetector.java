@@ -8,30 +8,31 @@ import org.springframework.context.ApplicationContextAware;
 
 public class ContextDetector implements ApplicationContextAware {
 
-	private final static Logger logger = LogManager
-			.getLogger(ContextDetector.class);
+    private final static Logger LOG = LogManager
+            .getLogger(ContextDetector.class);
 
-	@Override
-	public void setApplicationContext(ApplicationContext ctx)
-			throws BeansException {
-		if (ctx != null)
-			printApplicationContext(ctx);
-	}
+    @Override
+    public void setApplicationContext(ApplicationContext ctx)
+            throws BeansException {
+        if (ctx != null)
+            printApplicationContext(ctx);
+    }
 
-	private static void printApplicationContext(ApplicationContext ctx) {
-		logger.entry();
+    private static void printApplicationContext(ApplicationContext ctx) {
+        LOG.entry();
 
-		ApplicationContext pctx = ctx.getParent();
-		if (pctx != null)
-			printApplicationContext(pctx);
+        ApplicationContext pctx = ctx.getParent();
+        if (pctx != null) {
+            printApplicationContext(pctx);
+        }
 
-		logger.info("{}\t{}\t{}", ctx.getId(), ctx.getDisplayName(),
-				ctx.getApplicationName());
-		for (String name : ctx.getBeanDefinitionNames()) {
-			logger.info("\t{}", name);
-		}
+        LOG.info("{}\t{}\t{}", ctx.getId(), ctx.getDisplayName(),
+                ctx.getApplicationName());
+        for (String name : ctx.getBeanDefinitionNames()) {
+            LOG.info("\t{}", name);
+        }
 
-		logger.exit();
-	}
+        LOG.exit();
+    }
 
 }
