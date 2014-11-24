@@ -7,6 +7,7 @@ import javax.script.Compilable;
 import javax.script.CompiledScript;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
 import org.junit.Assert;
@@ -25,7 +26,7 @@ public class CompiledScriptTest {
     private static final int MAX = 1000;
 
     @Test
-    public void testJavaScript() throws Exception {
+    public void testJavaScript() throws ScriptException {
 
         CompiledScript script = compile("js", "单价*数量");
 
@@ -42,7 +43,7 @@ public class CompiledScriptTest {
     }
 
     @Test
-    public void testGroovy() throws Exception {
+    public void testGroovy() throws ScriptException {
 
         CompiledScript script = compile("groovy", "单价*数量");
 
@@ -60,7 +61,7 @@ public class CompiledScriptTest {
 
     // 测试未通过
     // @Test
-    // public void testClojure() throws Exception {
+    // public void testClojure() throws ScriptException {
     // CompiledScript script = compile("Clojure", "(* 单价 数量)");
     //
     // Bindings bindings = new SimpleBindings();
@@ -76,7 +77,7 @@ public class CompiledScriptTest {
     // }
 
     @Test
-    public void testPython() throws Exception {
+    public void testPython() throws ScriptException {
         // Ruby不支持汉字做变量名
         CompiledScript script = compile("python", "price*num");
 
@@ -93,7 +94,7 @@ public class CompiledScriptTest {
     }
 
     @Test
-    public void testRuby() throws Exception {
+    public void testRuby() throws ScriptException {
         // Ruby不支持汉字做变量名
         CompiledScript script = compile("ruby", "$price*$num");
 
@@ -110,14 +111,14 @@ public class CompiledScriptTest {
     }
 
     private CompiledScript compile(String scriptName, String script)
-            throws Exception {
+            throws ScriptException {
         ScriptEngine scriptEngine = MANAGER.getEngineByName(scriptName);
 
         if (scriptEngine instanceof Compilable) {
             Compilable compilable = (Compilable) scriptEngine;
             return compilable.compile(script);
         }
-        throw new Exception("Compilation is not supported");
+        throw new RuntimeException("Compilation is not supported");
     }
 
 }

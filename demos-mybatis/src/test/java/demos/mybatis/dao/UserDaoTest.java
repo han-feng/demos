@@ -19,54 +19,54 @@ import demos.mybatis.User;
 @ActiveProfiles("test")
 public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-	@Resource
-	private UserDao userDao;
+    @Resource
+    private UserDao userDao;
 
-	@Test
-	public void testDao() {
-		User user = userDao.get(0);
-		Assert.assertNull(user);
+    @Test
+    public void testDao() {
+        User user = userDao.get(0);
+        Assert.assertNull(user);
 
-		for (int i = 0; i < 100; i++) {
-			user = new User();
-			user.setId(i);
-			user.setName("User" + i);
-			user.setLoginName("user" + i);
-			user.setEmail("user" + i + "@test.com");
-			Assert.assertEquals(1, userDao.add(user));
-		}
+        for (int i = 0; i < 100; i++) {
+            user = new User();
+            user.setId(i);
+            user.setName("User" + i);
+            user.setLoginName("user" + i);
+            user.setEmail("user" + i + "@test.com");
+            Assert.assertEquals(1, userDao.add(user));
+        }
 
-		for (int i = 0; i < 100; i++) {
-			user = userDao.get(i);
-			Assert.assertNotNull(user);
-			Assert.assertEquals(i, user.getId());
-			Assert.assertEquals("User" + i, user.getName());
-			Assert.assertEquals("user" + i, user.getLoginName());
-			Assert.assertEquals("user" + i + "@test.com", user.getEmail());
-		}
+        for (int i = 0; i < 100; i++) {
+            user = userDao.get(i);
+            Assert.assertNotNull(user);
+            Assert.assertEquals(i, user.getId());
+            Assert.assertEquals("User" + i, user.getName());
+            Assert.assertEquals("user" + i, user.getLoginName());
+            Assert.assertEquals("user" + i + "@test.com", user.getEmail());
+        }
 
-		user.setId(50);
-		user.setName("TestName");
-		user.setLoginName("TestLoginName");
-		user.setEmail("TestEmail");
-		Assert.assertEquals(1, userDao.update(user));
+        user.setId(50);
+        user.setName("TestName");
+        user.setLoginName("TestLoginName");
+        user.setEmail("TestEmail");
+        Assert.assertEquals(1, userDao.update(user));
 
-		user = userDao.get(50);
-		Assert.assertNotNull(user);
-		Assert.assertEquals(50, user.getId());
-		Assert.assertEquals("TestName", user.getName());
-		Assert.assertEquals("TestLoginName", user.getLoginName());
-		Assert.assertEquals("TestEmail", user.getEmail());
+        user = userDao.get(50);
+        Assert.assertNotNull(user);
+        Assert.assertEquals(50, user.getId());
+        Assert.assertEquals("TestName", user.getName());
+        Assert.assertEquals("TestLoginName", user.getLoginName());
+        Assert.assertEquals("TestEmail", user.getEmail());
 
-		user = new User();
-		user.setName("ser");
-		List<User> list = userDao.find(user);
-		Assert.assertEquals(99, list.size());
+        user = new User();
+        user.setName("ser");
+        List<User> list = userDao.find(user);
+        Assert.assertEquals(99, list.size());
 
-		user = new User();
-		user.setName("TestName");
-		list = userDao.find(user);
-		Assert.assertEquals(1, list.size());
+        user = new User();
+        user.setName("TestName");
+        list = userDao.find(user);
+        Assert.assertEquals(1, list.size());
 
-	}
+    }
 }
