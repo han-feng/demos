@@ -8,15 +8,14 @@
 		ID=#{id}
 	</select>
 
-	<!-- 调用见 find 方法 -->
 	<select id="find" resultType="demos.mybatis.User">
-		select * from TEST_USER a
+		select * from TEST_USER
 		<where>
 			<if test="loginName != null and loginName != ''">
-				and a.LOGINNAME=#{loginName}
+				and LOGINNAME=#{loginName}
 			</if>
 			<if test="name != null and name != ''">
-				and a.NAME like '%${name}%'
+				and NAME like '%${name}%'
 			</if>
 		</where>
 	</select>
@@ -31,5 +30,10 @@
 		update TEST_USER set
 		NAME=#{name},LOGINNAME=#{loginName},EMAIL=#{email} where ID=#{id}
 	</update>
+
+	<delete id="delete">
+		delete from TEST_USER where
+		ID=#{id}
+	</delete>
 
 </mapper>

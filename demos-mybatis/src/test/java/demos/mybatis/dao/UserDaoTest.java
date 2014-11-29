@@ -68,5 +68,13 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
         list = userDao.find(user);
         Assert.assertEquals(1, list.size());
 
+        userDao.delete(50);
+        list = userDao.find(user);
+        Assert.assertEquals(0, list.size());
+
+        user.setName("User");
+        list = userDao.find(user);
+        Assert.assertEquals(99, list.size());
+
     }
 }

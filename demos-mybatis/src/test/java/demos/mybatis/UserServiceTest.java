@@ -67,5 +67,13 @@ public class UserServiceTest extends
         list = userService.findUser(user);
         Assert.assertEquals(1, list.size());
 
+        userService.deleteUser(50);
+        list = userService.findUser(user);
+        Assert.assertEquals(0, list.size());
+
+        user.setName("User");
+        list = userService.findUser(user);
+        Assert.assertEquals(99, list.size());
+
     }
 }

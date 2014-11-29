@@ -6,11 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Druid Demo</title>
 <!-- Bootstrap -->
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"
+<link href="webjars/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css"
+<link href="webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"
 	rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,58 +17,129 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-	<div class="container theme-showcase" role="main">
-		<h3>测试案例</h3>
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">批量数据操作</h3>
+<body style="height: 100%">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-3">
+				<h3>测试案例</h3>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">批量数据操作</h3>
+					</div>
+					<div class="panel-body">
+						<ol>
+							<li>插入100笔数据</li>
+							<li>更新这些数据</li>
+							<li>删除这些数据</li>
+						</ol>
+						<button id="but1" type="button" class="btn btn-sm btn-success"
+							data-loading-text="执行中......" onclick="test1()">
+							<span class="glyphicon glyphicon-play"></span>
+						</button>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">SQL注入攻击测试</h3>
+					</div>
+					<div class="panel-body">
+						<textarea class="form-control" rows="3"></textarea>
+						<button type="button" class="btn btn-sm btn-success">
+							<span class="glyphicon glyphicon-play"></span>
+						</button>
+						<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">随机访问以下地址100次</h3>
+					</div>
+					<div class="panel-body">
+						<ul>
+							<li>URL1</li>
+							<li>URL2</li>
+							<li>URL3</li>
+						</ul>
+						<button type="button" class="btn btn-sm btn-success">
+							<span class="glyphicon glyphicon-play"></span>
+						</button>
+						<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
+					</div>
+				</div>
 			</div>
-			<div class="panel-body">
-				<ol>
-					<li>插入100笔数据</li>
-					<li>更新这些笔数据</li>
-					<li>删除这些笔数据</li>
-				</ol>
-				<button type="button" class="btn btn-sm btn-success">
-					<span class="glyphicon glyphicon-play"></span>
-				</button>
-				<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
-			</div>
+			<!-- col1 end -->
+			<!-- <iframe class="col-xs-12 col-sm-8 col-md-9" style="height: 100%"
+				src="druid"></iframe> -->
+			<!-- col2 end -->
 		</div>
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">SQL注入攻击测试</h3>
-			</div>
-			<div class="panel-body">
-				<textarea class="form-control" rows="3"></textarea>
-				<button type="button" class="btn btn-sm btn-success">
-					<span class="glyphicon glyphicon-play"></span>
-				</button>
-				<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
-			</div>
-		</div>
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">随机访问以下地址100次</h3>
-			</div>
-			<div class="panel-body">
-				<ul>
-					<li>URL1</li>
-					<li>URL2</li>
-					<li>URL3</li>
-				</ul>
-				<button type="button" class="btn btn-sm btn-success">
-					<span class="glyphicon glyphicon-play"></span>
-				</button>
-				<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
-			</div>
-		</div>
+		<!-- row1 end -->
 	</div>
+	<!-- container end -->
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script
-		src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="webjars/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="js/jsonrpcjs-0.1.8.min.js"></script>
+	<script>
+		var rpc = new jsonrpc.JsonRpc("service/userService.json");
+		rpc.loading.bind(function() {
+			rpc.button.button("loading");
+		});
+		rpc.loaded.bind(function() {
+			rpc.button.button("reset");
+		});
+
+		function test1() {
+			rpc.button = $("#but1");
+			var result = [ 0, 0 ];
+			//插入100笔数据
+			for (var i = 0; i < 100; i++) {
+				rpc.call('addUser', {
+					id : i + "",
+					name : "User" + i,
+					loginName : "U" + i,
+					email : "U" + i + "@email.com"
+				}, {
+					success : function(r) {
+						result[0] += r;
+					},
+					failure : function(reason) {
+						result[1]++;
+						console.log('Method call failed because of ' + reason);
+					},
+				});
+			}
+			//更新这些数据
+			for (var i = 0; i < 100; i++) {
+				rpc.call('updateUser', {
+					id : i + "",
+					name : "UserUpdate" + i,
+					loginName : "UU" + i,
+					email : "UU" + i + "@email.com"
+				}, {
+					success : function(r) {
+						result[0] += r;
+					},
+					failure : function(reason) {
+						result[1]++;
+						console.log('Method call failed because of ' + reason);
+					},
+				});
+			}
+			//删除这些数据
+			for (var i = 0; i < 100; i++) {
+				rpc.call('deleteUser', i + "", {
+					success : function(r) {
+						result[0] += r;
+					},
+					failure : function(reason) {
+						result[1]++;
+						console.log('Method call failed because of ' + reason);
+					},
+				});
+			}
+		}
+	</script>
 </body>
 </html>

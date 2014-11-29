@@ -18,27 +18,31 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-jsr223</artifactId>
 			<version>2.3.7</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jruby</groupId>
 			<artifactId>jruby</artifactId>
 			<version>1.7.16</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.clojure</groupId>
 			<artifactId>clojure</artifactId>
 			<version>1.6.0</version>
-			<scope>runtime</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>clojure-jsr223</groupId>
 			<artifactId>clojure-jsr223</artifactId>
 			<version>1.2</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.python</groupId>
 			<artifactId>jython-standalone</artifactId>
 			<version>2.5.3</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
