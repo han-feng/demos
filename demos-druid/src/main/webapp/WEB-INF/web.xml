@@ -92,7 +92,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SpringServiceServlet</servlet-name>
+		<servlet-name>ServiceServlet</servlet-name>
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
 
