@@ -9,3 +9,4 @@ demos-jsr223 | mvn test | JSR-223(Scripting for the Java Platform)演示， <br>
 demos-drools | mvn test | Dools 6 的简单案例，特别包含 CEP 场景中典型的滑动时间窗的使用演示。 |
 demos-mybatis | mvn test | mybatis的简单案例 |
 demos-druid | mvn tomcat7:run <br> 然后用浏览器访问 http://localhost:9999/demos-druid | 演示了 Druid 数据库连接池提供的监控能力 |
+demos-uidl | mvn tomcat7:run <br> 然后用浏览器访问 http://localhost:9999/demos-druid | UIDL(用户界面描述语言)的概念验证 |

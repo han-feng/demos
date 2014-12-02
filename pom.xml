@@ -33,11 +33,11 @@
 		<module>demos-mybatis</module>
 		<module>demos-druid</module>
 		<module>demos-drools</module>
+		<module>demos-uidl</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
@@ -55,6 +55,12 @@
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
 				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.pjl-comp-filter</groupId>
+				<artifactId>pjl-comp-filter</artifactId>
+				<version>1.7</version>
+				<scope>runtime</scope>
 			</dependency>
 
 			<!-- spring -->
@@ -165,7 +171,6 @@
 				<version>${h2.version}</version>
 				<scope>test</scope>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 
@@ -197,6 +202,36 @@
 						<maxmem>256m</maxmem>
 						<aggregate>true</aggregate>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>${tomcat.version}</version>
+					<configuration>
+						<port>${webserver.port}</port>
+						<path>/${project.artifactId}</path>
+						<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+						<useTestClasspath>false</useTestClasspath>
+					</configuration>
+					<executions>
+						<execution>
+							<id>tomcat-run</id>
+							<goals>
+								<goal>run-war</goal>
+							</goals>
+							<phase>pre-integration-test</phase>
+							<configuration>
+								<fork>true</fork>
+							</configuration>
+						</execution>
+						<execution>
+							<id>tomcat-shutdown</id>
+							<goals>
+								<goal>shutdown</goal>
+							</goals>
+							<phase>post-integration-test</phase>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>

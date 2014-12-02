@@ -8,8 +8,8 @@
 <!-- Bootstrap -->
 <link href="webjars/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"
-	rel="stylesheet">
+<!-- <link href="webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+	rel="stylesheet"> -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -17,11 +17,16 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body style="height: 100%">
+<body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 col-sm-4 col-md-3">
+			<div class="col-md-12">
 				<h3>测试案例</h3>
+			</div>
+		</div>
+		<!-- row1 end -->
+		<div class="row">
+			<div class="col-sm-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">批量数据操作</h3>
@@ -33,11 +38,13 @@
 							<li>删除这些数据</li>
 						</ol>
 						<button id="but1" type="button" class="btn btn-sm btn-success"
-							data-loading-text="执行中......" onclick="test1()">
+							data-loading-text="执行中......">
 							<span class="glyphicon glyphicon-play"></span>
 						</button>
 					</div>
 				</div>
+			</div>
+			<div class="col-sm-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">SQL注入攻击测试</h3>
@@ -50,6 +57,8 @@
 						<span class="alert alert-warning" role="alert">开发中，暂未实现...</span>
 					</div>
 				</div>
+			</div>
+			<div class="col-sm-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">随机访问以下地址100次</h3>
@@ -67,12 +76,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- col1 end -->
-			<!-- <iframe class="col-xs-12 col-sm-8 col-md-9" style="height: 100%"
-				src="druid"></iframe> -->
-			<!-- col2 end -->
 		</div>
-		<!-- row1 end -->
+		<!-- row2 end -->
 	</div>
 	<!-- container end -->
 
@@ -90,8 +95,8 @@
 			rpc.button.button("reset");
 		});
 
-		function test1() {
-			rpc.button = $("#but1");
+		$("#but1").click(function() {
+			rpc.button = $(this);
 			var result = [ 0, 0 ];
 			//插入100笔数据
 			for (var i = 0; i < 100; i++) {
@@ -139,7 +144,7 @@
 					},
 				});
 			}
-		}
+		});
 	</script>
 </body>
 </html>

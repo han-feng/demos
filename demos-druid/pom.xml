@@ -47,6 +47,10 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>net.sourceforge.pjl-comp-filter</groupId>
+			<artifactId>pjl-comp-filter</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 		</dependency>
@@ -93,32 +97,6 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>${tomcat.version}</version>
-				<configuration>
-					<port>${webserver.port}</port>
-					<path>/${project.artifactId}</path>
-					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
-					<useTestClasspath>false</useTestClasspath>
-				</configuration>
-				<executions>
-					<execution>
-						<id>tomcat-run</id>
-						<goals>
-							<goal>run-war</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
-						<configuration>
-							<fork>true</fork>
-						</configuration>
-					</execution>
-					<execution>
-						<id>tomcat-shutdown</id>
-						<goals>
-							<goal>shutdown</goal>
-						</goals>
-						<phase>post-integration-test</phase>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
