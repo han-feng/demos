@@ -4,70 +4,69 @@ import java.util.Map;
 
 public class EventFact {
 
+    private long expires;
+    private Map<String, Object> indexMap;
+    private String name;
     private String subjectId;
     private String subjectTypeId;
-    private Map<String, Object> indexMap;
+    private long time;
+    private Object value;
+
+    public long getExpires() {
+        return expires;
+    }
 
     public Map<String, Object> getIndexMap() {
         return indexMap;
-    }
-
-    public void setIndexMap(Map<String, Object> indexMap) {
-        this.indexMap = indexMap;
-    }
-
-    public String getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(String subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public String getSubjectTypeId() {
-        return subjectTypeId;
-    }
-
-    public void setSubjectTypeId(String subjectTypeId) {
-        this.subjectTypeId = subjectTypeId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
+    public String getSubjectTypeId() {
+        return subjectTypeId;
     }
 
     public long getTime() {
         return time;
     }
 
-    public void setTime(long time) {
-        this.time = time;
-    }
-
-    public long getExpires() {
-        return expires;
+    public Object getValue() {
+        return value;
     }
 
     public void setExpires(long expires) {
         this.expires = expires;
     }
 
-    private String name;
-    private Object value;
-    private long time;
-    private long expires;
+    public void setIndexMap(Map<String, Object> indexMap) {
+        this.indexMap = indexMap;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public void setSubjectTypeId(String subjectTypeId) {
+        this.subjectTypeId = subjectTypeId;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
 
     public String toString() {
         return "EventFact(subjectId:\"" + subjectId + "\", subjectTypeId:\""

@@ -59,22 +59,18 @@ public class CompiledScriptTest {
         }
     }
 
-    // 测试未通过
-    // @Test
-    // public void testClojure() throws ScriptException {
-    // CompiledScript script = compile("Clojure", "(* 单价 数量)");
-    //
-    // Bindings bindings = new SimpleBindings();
-    // for (int i = 0; i < MAX; i++) {
-    // bindings.put("单价", 10.0 * i);
-    // bindings.put("数量", 100 * i);
-    //
-    // double ret = (Double) script.eval(bindings);
-    // bindings.clear();
-    //
-    // Assert.assertEquals(1000 * i * i, ret, 0.1);
-    // }
-    // }
+    // 测试未通过，compile()方法执行时报 java.io.FileNotFoundException 异常
+    /*
+     * @Test public void testClojure() throws ScriptException { CompiledScript
+     * script = compile("Clojure", "(* 单价 数量)");
+     * 
+     * Bindings bindings = new SimpleBindings(); for (int i = 0; i < MAX; i++) {
+     * bindings.put("单价", 10.0 * i); bindings.put("数量", 100 * i);
+     * 
+     * double ret = (Double) script.eval(bindings); bindings.clear();
+     * 
+     * Assert.assertEquals(1000 * i * i, ret, 0.1); } }
+     */
 
     @Test
     public void testPython() throws ScriptException {
@@ -118,7 +114,7 @@ public class CompiledScriptTest {
             Compilable compilable = (Compilable) scriptEngine;
             return compilable.compile(script);
         }
-        throw new RuntimeException("Compilation is not supported");
+        throw new ScriptException("Compilation is not supported");
     }
 
 }

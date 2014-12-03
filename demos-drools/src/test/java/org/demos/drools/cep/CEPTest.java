@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.KieBase;
@@ -14,6 +16,8 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 public class CEPTest {
+
+    private final static Logger LOG = LogManager.getLogger(CEPTest.class);
 
     @Test
     public void testEventFact() {
@@ -60,7 +64,7 @@ public class CEPTest {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                LOG.error("", e);
             }
         }
 
