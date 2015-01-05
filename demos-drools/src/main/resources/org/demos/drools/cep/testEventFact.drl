@@ -3,7 +3,7 @@ package org.demos.drools.cep
 import java.util.*
 
 dialect "mvel"
-
+//测试
 declare EventFact
     @role( event )
     @expires( 2s )
@@ -53,4 +53,3 @@ when
 then
 	result.put("test4",$s.clone());
 end
-

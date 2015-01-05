@@ -1,5 +1,7 @@
 package org.demos.drools.cep;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -11,22 +13,47 @@ import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
+import org.kie.api.builder.KieBuilder;
+import org.kie.api.builder.KieFileSystem;
+import org.kie.api.builder.Message.Level;
+import org.kie.api.builder.model.KieBaseModel;
+import org.kie.api.builder.model.KieModuleModel;
 import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 public class CEPTest {
 
-    private final static Logger LOG = LogManager.getLogger(CEPTest.class);
+    private static final Logger LOG = LogManager.getLogger(CEPTest.class);
 
     @Test
-    public void testEventFact() {
+    public void testEventFact() throws IOException {
 
-        KieContainer kc = KieServices.Factory.get().getKieClasspathContainer();
-        KieBaseConfiguration config = KieServices.Factory.get()
-                .newKieBaseConfiguration();
+        KieServices ks = KieServices.Factory.get();
+
+        KieModuleModel kmm = ks.newKieModuleModel();
+        KieBaseModel kbm = kmm.newKieBaseModel("CEPTest");
+        kbm.addPackage("demos.cep").newKieSessionModel("testEventFact");
+
+        KieFileSystem kfs = ks.newKieFileSystem();
+        kfs.writeKModuleXML(kmm.toXML());
+        kfs.write("src/main/resources/demos/cep/rule1.drl",
+                getRuleContent("org/demos/drools/cep/testEventFact.drl"));
+
+        KieBuilder kbuilder = ks.newKieBuilder(kfs);
+        kbuilder.buildAll();
+        if (kbuilder.getResults().hasMessages(Level.ERROR)) {
+            throw new RuntimeException("Build Errors:\n"
+                    + kbuilder.getResults().getMessages().get(0).toString());
+        }
+
+        KieContainer kc = ks.newKieContainer(ks.getRepository()
+                .getDefaultReleaseId());
+
+        KieBaseConfiguration config = ks.newKieBaseConfiguration();
         config.setOption(EventProcessingOption.STREAM);
         KieBase kb = kc.newKieBase("CEPTest", config);
+
         KieSession ksession = kb.newKieSession();
 
         Map<String, Object> result = new HashMap<String, Object>();
@@ -79,4 +106,18 @@ public class CEPTest {
         Assert.assertEquals(29, ksession.getFactCount());
 
     }
+
+    private static String getRuleContent(String classpath) throws IOException {
+        StringBuilder content = new StringBuilder();
+        byte[] b = new byte[8196];
+        InputStream in = CEPTest.class.getClassLoader().getResourceAsStream(
+                classpath);
+        int l;
+        while ((l = in.read(b)) > -1) {
+            content.append(new String(b, 0, l, "UTF-8"));
+        }
+
+        return content.toString();
+    }
+
 }
