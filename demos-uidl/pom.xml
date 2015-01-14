@@ -53,17 +53,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<finalName>demos-uidl</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<configuration>
-					<port>9991</port>
-					<path>/uidl</path>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
