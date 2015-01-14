@@ -25,6 +25,7 @@
 		<h2.version>1.4.182</h2.version>
 		<junit.version>4.11</junit.version>
 		<tomcat.version>2.2</tomcat.version>
+		<jetty.version>7.6.10.v20130312</jetty.version>
 
 	</properties>
 
@@ -201,6 +202,27 @@
 						<format>xml</format>
 						<maxmem>256m</maxmem>
 						<aggregate>true</aggregate>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+						<connectors>
+							<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+								<port>${webserver.port}</port>
+							</connector>
+						</connectors>
+						<webAppConfig>
+							<contextPath>/${project.artifactId}</contextPath>
+						</webAppConfig>
+						<systemProperties>
+							<systemProperty>
+								<name>org.mortbay.util.URI.charset</name>
+								<value>${project.build.sourceEncoding}</value>
+							</systemProperty>
+						</systemProperties>
 					</configuration>
 				</plugin>
 				<plugin>

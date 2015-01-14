@@ -12,6 +12,7 @@
 	rel="stylesheet"> -->
 <link href="webjars/zTree/3.5.15/css/zTreeStyle/zTreeStyle.css"
 	rel="stylesheet">
+<link href="webjars/codemirror/4.8/lib/codemirror.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,11 +24,29 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4">
-				<ul id="outline" class="ztree"></ul>
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">Outline</div>
+					<div class="panel-body">
+						<ul id="outline" class="ztree"></ul>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-8">
-				<button id="but1" type="button" class="btn btn-primary">测试</button>
+			<div class="col-sm-9">
+				<ul class="nav nav-tabs" role="tablist" id="editorTab">
+					<li role="presentation" class="active"><a href="#source"
+						role="tab" data-toggle="tab">源码</a></li>
+					<li role="presentation"><a href="#preview" role="tab"
+						data-toggle="tab">预览</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="source">
+						<textarea id="srcText" class="form-control"></textarea>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="preview"></div>
+				</div>
+
 			</div>
 		</div>
 		<!-- row1 end -->
@@ -39,15 +58,19 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="webjars/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="webjars/zTree/3.5.15/js/jquery.ztree.core.min.js"></script>
+	<script src="webjars/codemirror/4.8/lib/codemirror.js"></script>
+	<script src="webjars/codemirror/4.8/mode/javascript/javascript.js"></script>
+	<script src="webjars/codemirror/4.8/addon/edit/matchbrackets.js"></script>
+	<script src="webjars/codemirror/4.8/addon/edit/closebrackets.js"></script>
 	<script>
 		var setting = {};
 
-		var zNodes = [{
+		var zNodes = [ {
 			name : "父节点1 - 展开",
 			open : true,
-			children : [{
+			children : [ {
 				name : "父节点11 - 折叠",
-				children : [{
+				children : [ {
 					name : "叶子节点111"
 				}, {
 					name : "叶子节点112"
@@ -55,17 +78,20 @@
 					name : "叶子节点113"
 				}, {
 					name : "叶子节点114"
-				}]
-			}];
+				} ]
+			} ]
+		} ];
 
-		$(document).ready(function() {
-
-			$("but1").click(function() {
+		var editor = CodeMirror.fromTextArea(
+				document.getElementById("srcText"), {
+					lineNumbers : true,
+					matchBrackets : true,
+					autoCloseBrackets : true,
+					mode : "application/json",
+					lineWrapping : true
 				});
 
-			$.fn.zTree.init($("#outline"), setting, zNodes);
-
-		});
+		$.fn.zTree.init($("#outline"), setting, zNodes);
 	</script>
 </body>
 </html>
