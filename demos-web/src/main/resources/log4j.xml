@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+	<appender name="RollingFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="target/logs/log4jTest.log" />
+		<param name="Threshold" value="debug" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="Append" value="true" />
+		<param name="MaxBackupIndex" value="50" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%c{1}] %-5p %m%n" />
+		</layout>
+	</appender>
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} [%c{1}] %-5p %m%n" />
+		</layout>
+	</appender>
+	<logger name="com.cvicse.rbac" additivity="false">
+		<level value="info" />
+		<appender-ref ref="RollingFile" />
+		<appender-ref ref="Console" />
+	</logger>
+	<logger name="com.cvicse.filters.AccessMonitorFilter"
+		additivity="false">
+		<appender-ref ref="Console" />
+	</logger>
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="RollingFile" />
+	</root>
+
+</log4j:configuration>
