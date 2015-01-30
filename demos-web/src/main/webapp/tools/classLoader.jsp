@@ -144,8 +144,14 @@ td {
 </script>
 </head>
 <body>
+	<h1>JSP ClassLoader</h1>
 	<%
 	    printClassLoaderNodes(new Node().getRoot(), out);
+	%>
+	<h1>Context ClassLoader</h1>
+	<%
+	    printClassLoaderNodes(new Node(Thread.currentThread()
+	            .getContextClassLoader()).getRoot(), out);
 	%>
 </body>
 </html>
