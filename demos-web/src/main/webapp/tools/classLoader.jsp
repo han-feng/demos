@@ -1,6 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%@page import="java.util.*,java.net.*,java.io.*" language="java"
-	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.lang.reflect.Method"%>
+<%@page import="java.util.*,java.net.*,java.io.*,java.lang.reflect.*"
+	language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
     response.setHeader("Pragma", "no-cache");
 			response.setHeader("Cache-Control", "no-cache");
@@ -64,12 +66,27 @@
 			return (Node[]) this.children.toArray(new Node[children.size()]);
 		}
 
-		public URL[] getURLs() {
+		public String[] getURLs() {
+			String[] urls;
+			int len;
 			if (classLoader instanceof URLClassLoader) {
-				return ((URLClassLoader) classLoader).getURLs();
+				URL[] urlObjs = ((URLClassLoader) classLoader).getURLs();
+				len = urlObjs.length;
+				urls = new String[len];
+				for (int i = 0; i < len; i++) {
+					urls[i] = urlObjs[i].toString();
+				}
 			} else {
-				return new URL[0];
+				try {
+					Method method = classLoader.getClass().getMethod(
+							"getFinderClassPath");
+					String classpath = (String) method.invoke(classLoader);
+					urls = classpath.split(";");
+				} catch (Exception e) {
+					return new String[0];
+				}
 			}
+			return urls;
 		}
 	}
 
@@ -84,7 +101,7 @@
 			out.print(" colspan='" + size + "'");
 		out.print(">");
 		out.print(node.type);
-		URL[] urls = node.getURLs();
+		String[] urls = node.getURLs();
 		int urlsize = urls.length;
 		out.print(" &nbsp; <a href=\"javascript:displayNode('node_urls_"
 				+ node.id + "')\">详细信息</a>");

@@ -2,6 +2,7 @@
 <%@page import="java.util.*,java.net.URL" language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+    //
     response.setHeader("Pragma", "no-cache");
     response.setHeader("Cache-Control", "no-cache");
     response.setDateHeader("Expires", 0);
@@ -39,7 +40,9 @@ li {
 	%>
 	<hr />
 	<%
-	    resUri = resUri.trim();
+	    //
+	        resUri = resUri.trim();
+
 	        ClassLoader classLoader = Thread.currentThread()
 	                .getContextClassLoader();
 	        URL url = classLoader.getResource(resUri);
@@ -48,7 +51,8 @@ li {
 	<label>搜索结果</label>
 	<ol>
 		<%
-		    Enumeration resources = classLoader.getResources(resUri);
+		    //
+		            Enumeration resources = classLoader.getResources(resUri);
 		            Object value;
 		            while (resources.hasMoreElements()) {
 		                value = resources.nextElement();
@@ -61,11 +65,13 @@ li {
 		%>
 	</ol>
 	<%
-	    } else {
+	    //
+	        } else {
 	%>
 	<label>搜索结果：未找到 <%=resUri%></label>
 	<%
-	    }
+	    //
+	        }
 	    }
 	%>
 </body>
