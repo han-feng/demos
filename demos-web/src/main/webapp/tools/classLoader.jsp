@@ -71,6 +71,8 @@
 			int len;
 			if (classLoader instanceof URLClassLoader) {
 				URL[] urlObjs = ((URLClassLoader) classLoader).getURLs();
+				if (urlObjs == null)
+					return new String[0];
 				len = urlObjs.length;
 				urls = new String[len];
 				for (int i = 0; i < len; i++) {
