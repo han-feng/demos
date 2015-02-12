@@ -8,6 +8,7 @@
 		<li><a href="logger.jsp">日志配置信息</a></li>
 		<li><a href="javaResource.jsp">Java资源查找</a></li>
 		<li><a href="classLoader.jsp">类加载器结构</a></li>
+		<li><a href="cluster.jsp">集群验证工具</a></li>
 	</ul>
 </body>
 </html>

@@ -27,7 +27,11 @@
 <style>
 table {
 	border-collapse: collapse;
-	border: 1px solid black;
+	border: 0 solid;
+}
+
+table table {
+	border: 1px solid #ccc;
 }
 
 th {
