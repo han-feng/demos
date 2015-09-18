@@ -4,13 +4,21 @@
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="%highlight{%d{ABSOLUTE} [%c{1}] %-5p %m%n%throwable}" />
 		</Console>
+		<RollingFile name="RollingFile" fileName="target/logs/demos.log"
+			filePattern="target/logs/demos.log.%i">
+			<PatternLayout pattern="%d [%c{1}] %-5p %m%n" />
+			<SizeBasedTriggeringPolicy size="2MB" />
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
 	</appenders>
 	<loggers>
 		<logger name="demos" level="info" additivity="false">
 			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
 		</logger>
 		<root level="warn">
 			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
 		</root>
 	</loggers>
 </configuration> 

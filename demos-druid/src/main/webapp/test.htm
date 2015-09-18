@@ -87,7 +87,8 @@
 	<script src="webjars/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="js/jsonrpcjs-0.1.8.min.js"></script>
 	<script>
-		var rpc = new jsonrpc.JsonRpc("service/userService.json");
+		var testCount = 100;
+		var rpc = new jsonrpc.JsonRpc("service/user");
 		rpc.loading.bind(function() {
 			rpc.button.button("loading");
 		});
@@ -99,7 +100,7 @@
 			rpc.button = $(this);
 			var result = [ 0, 0 ];
 			//插入100笔数据
-			for (var i = 0; i < 100; i++) {
+			for (var i = 0; i < testCount; i++) {
 				rpc.call('addUser', {
 					id : i + "",
 					name : "User" + i,
@@ -116,7 +117,7 @@
 				});
 			}
 			//更新这些数据
-			for (var i = 0; i < 100; i++) {
+			for (var i = 0; i < testCount; i++) {
 				rpc.call('updateUser', {
 					id : i + "",
 					name : "UserUpdate" + i,
@@ -133,7 +134,7 @@
 				});
 			}
 			//删除这些数据
-			for (var i = 0; i < 100; i++) {
+			for (var i = 0; i < testCount; i++) {
 				rpc.call('deleteUser', i + "", {
 					success : function(r) {
 						result[0] += r;

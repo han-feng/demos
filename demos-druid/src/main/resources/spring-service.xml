@@ -5,7 +5,7 @@
 
 	<description>Spring Service Configuration</description>
 
-	<bean id="/userService.json" class="com.googlecode.jsonrpc4j.spring.JsonServiceExporter">
+	<bean id="/user" class="com.googlecode.jsonrpc4j.spring.JsonServiceExporter">
 		<property name="service" ref="userService" />
 		<property name="serviceInterface" value="demos.mybatis.UserService" />
 	</bean>
@@ -13,7 +13,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!--设置拦截的路径 -->
-			<mvc:mapping path="/userService.json" />
+			<mvc:mapping path="/user" />
 			<bean class="demos.druid.GetSessionInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
