@@ -55,7 +55,7 @@
 		<bean id="dataSource"
 			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="url"
-				value="jdbc:wrap-jdbc:filters=wall,stat:name=proxyTest:jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1" />
+				value="jdbc:wrap-jdbc:driver=org.h2.Driver:filters=wall,stat:jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1" />
 			<property name="username" value="sa" />
 			<property name="password" value="sa123" />
 		</bean>
