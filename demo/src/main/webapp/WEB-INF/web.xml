@@ -15,15 +15,39 @@
 		<url-pattern>/forward/*</url-pattern>
 	</filter-mapping>
 
+	<!-- 数据库连接有效性测试 -->
+	<filter>
+		<filter-name>testDBFiler</filter-name>
+		<filter-class>demo.web.TestDBConnectionFilter</filter-class>
+	</filter>
+
 	<!-- 根路径处理策略测试 -->
-	<!-- <filter> <filter-name>testFiler</filter-name> <filter-class>demo.web.TestFilter</filter-class> 
-		</filter> <filter-mapping> <filter-name>testFiler</filter-name> <url-pattern>/</url-pattern> 
-		</filter-mapping> <servlet> <servlet-name>testServlet</servlet-name> <servlet-class>demo.web.TestServlet</servlet-class> 
-		</servlet> <servlet-mapping> <servlet-name>testServlet</servlet-name> <url-pattern>/</url-pattern> 
-		</servlet-mapping> -->
+	<filter>
+		<filter-name>testFiler</filter-name>
+		<filter-class>demo.web.TestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>testFiler</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>demo.web.TestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/test</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
 </web-app>

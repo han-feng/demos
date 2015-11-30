@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context useHttpOnly="true" crossContext="true">
+
+	<Resource name="jdbc/test" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="sa" password="123"
+		driverClassName="org.h2.Driver" url="jdbc:h2:./h2testdb" />
+
+</Context>
