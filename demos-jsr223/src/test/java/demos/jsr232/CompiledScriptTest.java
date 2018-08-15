@@ -60,17 +60,21 @@ public class CompiledScriptTest {
     }
 
     // 测试未通过，compile()方法执行时报 java.io.FileNotFoundException 异常
-    /*
-     * @Test public void testClojure() throws ScriptException { CompiledScript
-     * script = compile("Clojure", "(* 单价 数量)");
-     * 
-     * Bindings bindings = new SimpleBindings(); for (int i = 0; i < MAX; i++) {
-     * bindings.put("单价", 10.0 * i); bindings.put("数量", 100 * i);
-     * 
-     * double ret = (Double) script.eval(bindings); bindings.clear();
-     * 
-     * Assert.assertEquals(1000 * i * i, ret, 0.1); } }
-     */
+    // @Test
+    // public void testClojure() throws ScriptException {
+    // CompiledScript script = compile("Clojure", "(* 单价 数量)");
+    //
+    // Bindings bindings = new SimpleBindings();
+    // for (int i = 0; i < MAX; i++) {
+    // bindings.put("单价", 10.0 * i);
+    // bindings.put("数量", 100 * i);
+    //
+    // double ret = (Double) script.eval(bindings);
+    // bindings.clear();
+    //
+    // Assert.assertEquals(1000 * i * i, ret, 0.1);
+    // }
+    // }
 
     @Test
     public void testPython() throws ScriptException {
@@ -106,10 +110,29 @@ public class CompiledScriptTest {
         }
     }
 
+    @Test
+    public void testLua() throws ScriptException {
+        // lua不支持汉字做变量名
+        CompiledScript script = compile("lua", "return price*num");
+
+        Bindings bindings = new SimpleBindings();
+        for (int i = 0; i < MAX; i++) {
+            bindings.put("price", 10.0 * i);
+            bindings.put("num", 100 * i);
+
+            Number ret = (Number) script.eval(bindings);
+            bindings.clear();
+
+            Assert.assertEquals(1000.0 * i * i, ret.doubleValue(), 0.1);
+        }
+    }
+
     private CompiledScript compile(String scriptName, String script)
             throws ScriptException {
         ScriptEngine scriptEngine = MANAGER.getEngineByName(scriptName);
-
+        if (scriptEngine == null) {
+            throw new RuntimeException(scriptName + " not supported");
+        }
         if (scriptEngine instanceof Compilable) {
             Compilable compilable = (Compilable) scriptEngine;
             return compilable.compile(script);

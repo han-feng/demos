@@ -76,15 +76,28 @@ public class ScriptTest {
         Assert.assertEquals(1000, ret, 0.1);
     }
 
+    @Test
+    public void testLua() throws ScriptException {
+        // lua不支持汉字做变量名
+        Bindings bindings = new SimpleBindings();
+        bindings.put("price", 10.0);
+        bindings.put("num", 100);
+        Number ret = (Number) test("lua", "return price*num", bindings);
+        Assert.assertEquals(1000, ret.doubleValue(), 0.1);
+    }
+
     private Object test(String scriptName, String script, Bindings bindings)
             throws ScriptException {
         ScriptEngine scriptEngine = MANAGER.getEngineByName(scriptName);
+        if (scriptEngine == null) {
+            throw new RuntimeException(scriptName + " not supported");
+        }
         return scriptEngine.eval(script, bindings);
     }
 
     @BeforeClass
     public static void init() {
-        // JavaFX Script, Groovy, JRuby, Jython, JavaScript, Scala, Clojure
+        // JavaFX Script, Groovy, JRuby, Jython, JavaScript, Scala, Clojure, Lua
         LOG.entry();
         LOG.info("当前支持的脚本引擎有：");
         for (ScriptEngineFactory factory : MANAGER.getEngineFactories()) {
@@ -98,12 +111,19 @@ public class ScriptTest {
             LOG.info("\t\tMimeTypes: {}", factory.getMimeTypes());
             LOG.info("\t\tExtensions: {}", factory.getExtensions());
 
-            if (factory.getScriptEngine() instanceof Compilable) {
-                LOG.info("\t\tSupport compilation.");
-            }
+            ScriptEngine engine = factory.getScriptEngine();
+            if (engine != null) {
 
-            if (factory.getScriptEngine() instanceof Invocable) {
-                LOG.info("\t\tSupport invocation.");
+                LOG.info("\t\tEngine implementation: {}",
+                        engine.getClass().getName());
+
+                if (factory.getScriptEngine() instanceof Compilable) {
+                    LOG.info("\t\tSupport compilation.");
+                }
+
+                if (factory.getScriptEngine() instanceof Invocable) {
+                    LOG.info("\t\tSupport invocation.");
+                }
             }
         }
         LOG.exit();
