@@ -6,13 +6,14 @@
 	<parent>
 		<groupId>demos</groupId>
 		<artifactId>demos</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>demos-mybatis</artifactId>
 
 	<name>demos-mybatis</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/han-feng/demos</url>
 
 	<dependencies>
 		<dependency>

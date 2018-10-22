@@ -5,14 +5,16 @@
 
 	<groupId>demos</groupId>
 	<artifactId>demos</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 	<packaging>pom</packaging>
 
 	<name>demos</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/han-feng/demos</url>
 
 	<properties>
-		<java.version>1.7</java.version>
+		<revision>1.0-SNAPSHOT</revision>
+
+		<java.version>1.8</java.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -24,24 +26,25 @@
 
 		<webserver.port>9999</webserver.port>
 
-		<spring.version>3.2.12.RELEASE</spring.version>
-		<slf4j.version>1.7.7</slf4j.version>
-		<log4j2.version>2.3</log4j2.version>
-		<druid.version>1.0.15</druid.version>
-		<h2.version>1.4.182</h2.version>
-		<junit.version>4.11</junit.version>
+		<spring.version>4.3.20.RELEASE</spring.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<log4j2.version>2.11.1</log4j2.version>
+		<druid.version>1.1.12</druid.version>
+		<h2.version>1.4.197</h2.version>
+		<junit.version>4.12</junit.version>
 		<tomcat.version>2.2</tomcat.version>
-		<jetty.version>9.2.6.v20141205</jetty.version>
+		<jetty.version>9.4.12.v20180830</jetty.version>
 
 	</properties>
 
 	<modules>
 		<module>demos-jsr223</module>
+		<module>demos-graphql</module>
 		<module>demos-mybatis</module>
 		<module>demos-druid</module>
 		<module>demos-drools</module>
-		<module>demos-uidl</module>
 		<module>demos-web</module>
+		<module>demos-uidl</module>
 	</modules>
 
 	<dependencyManagement>

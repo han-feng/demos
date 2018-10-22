@@ -11,7 +11,7 @@
 	</context-param>
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
-		<param-value>druid-test</param-value>
+		<param-value>druid-driver-test</param-value>
 	</context-param>
 
 	<listener>
