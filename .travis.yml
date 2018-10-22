@@ -1,14 +1,19 @@
 language: java
+
 jdk:
   - openjdk7
   - openjdk8
-  - oraclejdk7
   - oraclejdk8
-# whitelist
+
 branches:
   only:
     - master
+
 notifications:
   email: false
+
+script: "mvn cobertura:cobertura"
+
 after_success:
-  - mvn cobertura:cobertura coveralls:report
+  - mvn coveralls:report
+  - bash <(curl -s https://codecov.io/bash)
