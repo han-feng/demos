@@ -15,7 +15,7 @@ addons:
   sonarcloud:
     organization: "han-feng-github"
     token:
-      secure: "9ecffa1f44a5274dd1e189ffabf57b9f34c34223"
+      secure: $SONAR_CLOUD_TOKEN
 
 cache:
   directories:

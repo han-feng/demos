@@ -1,5 +1,6 @@
 demos [![Build Status](https://travis-ci.org/han-feng/demos.svg?branch=master)](https://travis-ci.org/han-feng/demos) [![Coverage Status](https://coveralls.io/repos/han-feng/demos/badge.png?branch=master)](https://coveralls.io/r/han-feng/demos?branch=master)
 [![codecov](https://codecov.io/gh/han-feng/demos/branch/master/graph/badge.svg)](https://codecov.io/gh/han-feng/demos)
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=demos%3Ademos&metric=alert_status)](https://sonarcloud.io/dashboard?id=demos%3Ademos)
 =====
 
 学习开源技术过程中积累的Demo集合
