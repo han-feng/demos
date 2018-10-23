@@ -13,14 +13,19 @@ notifications:
 
 addons:
   sonarcloud:
-    organization: "sonarcloud_organization_key"
+    organization: "han-feng-github"
     token:
-      secure: 9ecffa1f44a5274dd1e189ffabf57b9f34c34223
+      secure: "9ecffa1f44a5274dd1e189ffabf57b9f34c34223"
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
 
 script:
   - mvn clean cobertura:cobertura package
 
 after_success:
   - mvn coveralls:report
+  - mvn sonar:sonar
   - bash <(curl -s https://codecov.io/bash)
-  - sonar-scanner
