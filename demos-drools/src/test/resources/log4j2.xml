@@ -6,7 +6,7 @@
 		</Console>
 	</appenders>
 	<loggers>
-		<logger name="demos" level="info" additivity="false">
+		<logger name="org.demos" level="info" additivity="false">
 			<appender-ref ref="Console" />
 		</logger>
 		<root level="warn">

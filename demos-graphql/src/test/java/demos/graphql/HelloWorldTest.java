@@ -2,6 +2,8 @@ package demos.graphql;
 
 import static graphql.schema.idl.RuntimeWiring.newRuntimeWiring;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.junit.Test;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
+import graphql.schema.GraphQLType;
 import graphql.schema.StaticDataFetcher;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -22,8 +25,6 @@ public class HelloWorldTest {
 
     @Test
     public void testHelloWorld() {
-        LOG.entry();
-
         String schema = "type Query{hello: String}";
 
         SchemaParser schemaParser = new SchemaParser();
@@ -39,10 +40,15 @@ public class HelloWorldTest {
         GraphQLSchema graphQLSchema = schemaGenerator
                 .makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
 
+        List<GraphQLType> types = graphQLSchema.getAllTypesAsList();
+        LOG.info(types.size());
+        for (GraphQLType type : types) {
+            LOG.info(type);
+        }
+
         GraphQL build = GraphQL.newGraphQL(graphQLSchema).build();
         ExecutionResult executionResult = build.execute("{hello}");
 
         LOG.info(executionResult.getData().toString());
-        LOG.exit();
     }
 }
