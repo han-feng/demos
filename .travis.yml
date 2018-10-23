@@ -11,8 +11,16 @@ branches:
 notifications:
   email: false
 
-script: "mvn clean cobertura:cobertura"
+addons:
+  sonarcloud:
+    organization: "sonarcloud_organization_key"
+    token:
+      secure: 9ecffa1f44a5274dd1e189ffabf57b9f34c34223
+
+script:
+  - mvn clean cobertura:cobertura package
 
 after_success:
   - mvn coveralls:report
   - bash <(curl -s https://codecov.io/bash)
+  - sonar-scanner
