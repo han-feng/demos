@@ -11,8 +11,7 @@ branches:
 notifications:
   email: false
 
-# script: "mvn clean cobertura:cobertura"
-script: "mvn clean test jacoco:report"
+script: "mvn clean cobertura:cobertura"
 
 after_success:
   - mvn coveralls:report
