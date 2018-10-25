@@ -46,6 +46,7 @@
 		<module>demos-drools</module>
 		<module>demos-web</module>
 		<module>demos-uidl</module>
+		<module>demos-springsec</module>
 	</modules>
 
 	<dependencyManagement>
@@ -193,6 +194,34 @@
 
 	<build>
 		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<!-- 简化发布文件中的POM文件 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<configuration>
+					<flattenMode>oss</flattenMode>
+					<outputDirectory>${project.build.directory}</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -210,11 +239,8 @@
 						<aggregate>true</aggregate>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.sonarsource.scanner.maven</groupId>
-					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.5.0.1254</version>
-				</plugin>
+				<!--plugin> <groupId>org.sonarsource.scanner.maven</groupId> <artifactId>sonar-maven-plugin</artifactId> 
+					<version>3.5.0.1254</version> </plugin -->
 				<plugin>
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>

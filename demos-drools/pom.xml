@@ -12,7 +12,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<groupId>demos-drools</groupId>
+	<groupId>demos</groupId>
 	<artifactId>demos-drools</artifactId>
 
 	<name>demos-drools</name>
