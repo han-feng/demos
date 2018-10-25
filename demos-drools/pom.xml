@@ -12,7 +12,6 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<groupId>demos</groupId>
 	<artifactId>demos-drools</artifactId>
 
 	<name>demos-drools</name>
