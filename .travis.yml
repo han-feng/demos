@@ -2,9 +2,7 @@ language: java
 
 jdk:
   - openjdk8
-  - oraclejdk9
-  - openjdk10
-  - oraclejdk11
+  - oraclejdk8
 
 branches:
   only:
@@ -21,11 +19,11 @@ addons:
 
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+    - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"
 
 script:
-  - mvn clean package
+  - mvn clean cobertura:cobertura package
 
 after_success:
   - mvn coveralls:report

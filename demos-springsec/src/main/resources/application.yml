@@ -1,0 +1,8 @@
+logging:
+  file: 'target/logs/test.log'
+  level:
+    root: info
+    org.demos: trace
+  pattern:
+    console: '%highlight{%d{ABSOLUTE} [%c{1}] %-5p %m%n%throwable}'
+    file: '%d [%c{1}] %-5p %m%n'

@@ -1,5 +1,5 @@
 # 暂时忽略该项目内容
-demo/
+demo/*
 
 # Maven
 target/
@@ -13,6 +13,9 @@ target/
 # IDEA
 *.idea
 *.iml
+
+# VSCode
+.vscode/
 
 # log
 *.log
