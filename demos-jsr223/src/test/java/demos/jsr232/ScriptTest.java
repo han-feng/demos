@@ -98,7 +98,6 @@ public class ScriptTest {
     @BeforeClass
     public static void init() {
         // JavaFX Script, Groovy, JRuby, Jython, JavaScript, Scala, Clojure, Lua
-        LOG.entry();
         LOG.info("当前支持的脚本引擎有：");
         for (ScriptEngineFactory factory : MANAGER.getEngineFactories()) {
             LOG.info("\t{} ({}):", factory.getEngineName(),
@@ -126,6 +125,5 @@ public class ScriptTest {
                 }
             }
         }
-        LOG.exit();
     }
 }

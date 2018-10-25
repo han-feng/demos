@@ -20,7 +20,6 @@ public class ContextDetector implements ApplicationContextAware {
     }
 
     private static void printApplicationContext(ApplicationContext ctx) {
-        LOG.entry();
 
         ApplicationContext pctx = ctx.getParent();
         if (pctx != null) {
@@ -32,8 +31,6 @@ public class ContextDetector implements ApplicationContextAware {
         for (String name : ctx.getBeanDefinitionNames()) {
             LOG.info("\t{}", name);
         }
-
-        LOG.exit();
     }
 
 }
