@@ -14,7 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/webconfig/filters")
+@RequestMapping("/test")
 public class WebConfigDetector {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
@@ -22,7 +22,12 @@ public class WebConfigDetector {
     @Autowired
     private ServletContext servletContext;
 
-    @GetMapping
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello";
+    }
+
+    @GetMapping("/filters")
     public String getConfig() {
         Map<String, ? extends FilterRegistration> filters = servletContext
                 .getFilterRegistrations();
