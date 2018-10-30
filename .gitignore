@@ -1,8 +1,8 @@
-# 暂时忽略该项目
-demo/
-
 # Maven
 target/
+
+# Gradle
+.gradle/
 
 # Eclipse
 .classpath
@@ -11,7 +11,7 @@ target/
 .externalToolBuilders/
 
 # IDEA
-*.idea
+*.idea/
 *.iml
 
 # VSCode

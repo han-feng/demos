@@ -11,8 +11,16 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<java.version>1.7</java.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.6</jdk.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<maven.compiler.fork>true</maven.compiler.fork>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
+
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>9.2.6.v20141205</jetty.version>
 	</properties>
@@ -35,21 +43,30 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.bull.javamelody</groupId>
+			<artifactId>javamelody-core</artifactId>
+			<version>1.59.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<target>${jdk.version}</target>
-					<source>${jdk.version}</source>
-				</configuration>
-			</plugin>
+			<!-- <plugin> <groupId>net.revelc.code</groupId> <artifactId>formatter-maven-plugin</artifactId> 
+				<version>0.5.2</version> <executions> <execution> <goals> <goal>format</goal> 
+				</goals> </execution> </executions> <configuration> <includes> <include>**/*.java</include> 
+				<include>**/*.js</include> </includes> </configuration> </plugin> -->
+			<!-- <plugin> <groupId>com.marvinformatics.formatter</groupId> <artifactId>formatter-maven-plugin</artifactId> 
+				<version>1.5.0</version> <executions> <execution> <goals> <goal>format</goal> 
+				</goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
