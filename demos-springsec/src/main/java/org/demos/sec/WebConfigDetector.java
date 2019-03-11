@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jdk.internal.instrumentation.Logger;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/test")
 public class WebConfigDetector {
+
+    private static final Logger LOG = LoggerFactory.getLogger(WebConfigDetector.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -39,7 +43,7 @@ public class WebConfigDetector {
             return objectMapper.writerWithDefaultPrettyPrinter()
                     .writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return object.toString();
     }

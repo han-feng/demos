@@ -11,6 +11,7 @@
 %>
 <html>
 <head>
+<title>Java资源查找</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
 label {
