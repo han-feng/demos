@@ -23,7 +23,7 @@ cache:
     - "$HOME/.sonar/cache"
 
 script:
-  - mvn clean cobertura:cobertura package
+  - mvn clean package
 
 after_success:
   - mvn coveralls:report
