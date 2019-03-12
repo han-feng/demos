@@ -5,12 +5,12 @@ import java.util.Map;
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jdk.internal.instrumentation.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +43,7 @@ public class WebConfigDetector {
             return objectMapper.writerWithDefaultPrettyPrinter()
                     .writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            LOG.error(e);
+            LOG.error("", e);
         }
         return object.toString();
     }
