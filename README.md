@@ -1,4 +1,5 @@
-# demos [![Build Status](https://travis-ci.org/han-feng/demos.svg?branch=master)](https://travis-ci.org/han-feng/demos) [![Coverage Status](https://coveralls.io/repos/han-feng/demos/badge.png?branch=master)](https://coveralls.io/r/han-feng/demos?branch=master) [![codecov](https://codecov.io/gh/han-feng/demos/branch/master/graph/badge.svg)](https://codecov.io/gh/han-feng/demos) [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=demos%3Ademos&metric=alert_status)](https://sonarcloud.io/dashboard?id=demos%3Ademos)
+# demos [![Build Status](https://travis-ci.org/han-feng/demos.svg?branch=master)](https://travis-ci.org/han-feng/demos) [![Coverage Status](https://coveralls.io/repos/han-feng/demos/badge.png?branch=master)](https://coveralls.io/r/han-feng/demos?branch=master) [![codecov](https://codecov.io/gh/han-feng/demos/branch/master/graph/badge.svg)](https://codecov.io/gh/han-feng/demos) [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=demos%3Ademos&metric=alert_status)](https://sonarcloud.io/dashboard?id=demos%3Ademos)[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhan-feng%2Fdemos.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhan-feng%2Fdemos?ref=badge_shield)
+
 
 学习开源技术过程中积累的 Demo 集合
 
@@ -9,3 +10,7 @@
 | demos-drools  | mvn test                                                                | Drools 6 的简单案例，特别包含 CEP 场景中典型的滑动时间窗的使用演示。                                                                                                     |
 | demos-mybatis | mvn test                                                                | mybatis 的简单案例                                                                                                                                                       |
 | demos-druid   | mvn tomcat7:run <br> 然后用浏览器访问 http://localhost:9990/demos-druid | 演示了 Druid 数据库连接池提供的监控能力                                                                                                                                  |
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhan-feng%2Fdemos.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhan-feng%2Fdemos?ref=badge_large)
