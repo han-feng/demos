@@ -11,15 +11,19 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>demos-refactor</artifactId>
-	<name>demos-refactor</name>
+	<artifactId>demos-yaml</artifactId>
+	<name>demos-yaml</name>
 	<url>https://github.com/han-feng/demos</url>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.eclipse.jdt</groupId>
-			<artifactId>org.eclipse.jdt.core</artifactId>
-			<version>3.16.0</version>
+			<groupId>org.snakeyaml</groupId>
+			<artifactId>snakeyaml-engine</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

@@ -1,4 +1,10 @@
-# demos [![Build Status](https://travis-ci.org/han-feng/demos.svg?branch=master)](https://travis-ci.org/han-feng/demos) [![Coverage Status](https://coveralls.io/repos/han-feng/demos/badge.png?branch=master)](https://coveralls.io/r/han-feng/demos?branch=master) [![codecov](https://codecov.io/gh/han-feng/demos/branch/master/graph/badge.svg)](https://codecov.io/gh/han-feng/demos) [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=demos%3Ademos&metric=alert_status)](https://sonarcloud.io/dashboard?id=demos%3Ademos)
+# demos
+
+ [![Build Status](https://travis-ci.org/han-feng/demos.svg?branch=master)](https://travis-ci.org/han-feng/demos)
+ [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=demos%3Ademos&metric=alert_status)](https://sonarcloud.io/dashboard?id=demos%3Ademos)
+ [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c7c48133bec4c6295be6ae8d67505d5)](https://www.codacy.com/app/han-feng/demos?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=han-feng/demos&amp;utm_campaign=Badge_Grade)
+ [![Coverage Status](https://coveralls.io/repos/github/han-feng/demos/badge.svg?branch=master)](https://coveralls.io/github/han-feng/demos?branch=master)
+ [![codecov](https://codecov.io/gh/han-feng/demos/branch/master/graph/badge.svg)](https://codecov.io/gh/han-feng/demos)
 
 学习开源技术过程中积累的 Demo 集合
 

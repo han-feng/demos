@@ -48,6 +48,7 @@
 		<module>demos-uidl</module>
 		<module>demos-springsec</module>
 		<module>demos-refactor</module>
+		<module>demos-yaml</module>
 	</modules>
 
 	<dependencyManagement>
@@ -225,12 +226,19 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.2</version>
+				<version>0.8.3</version>
 				<executions>
 					<execution>
 						<id>jacoco-initialize</id>
 						<goals>
 							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -289,10 +297,10 @@
 						<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
 						<useTestClasspath>false</useTestClasspath>
 					</configuration>
-					<!-- executions> <execution> <id>tomcat-run</id> <goals> <goal>run-war</goal>
-						</goals> <phase>pre-integration-test</phase> <configuration> <fork>true</fork>
-						</configuration> </execution> <execution> <id>tomcat-shutdown</id> <goals>
-						<goal>shutdown</goal> </goals> <phase>post-integration-test</phase> </execution>
+					<!-- executions> <execution> <id>tomcat-run</id> <goals> <goal>run-war</goal> 
+						</goals> <phase>pre-integration-test</phase> <configuration> <fork>true</fork> 
+						</configuration> </execution> <execution> <id>tomcat-shutdown</id> <goals> 
+						<goal>shutdown</goal> </goals> <phase>post-integration-test</phase> </execution> 
 						</executions -->
 				</plugin>
 			</plugins>
