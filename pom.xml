@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>demos</groupId>
@@ -49,6 +47,7 @@
 		<module>demos-springsec</module>
 		<module>demos-refactor</module>
 		<module>demos-yaml</module>
+		<module>demos-bc</module>
 	</modules>
 
 	<dependencyManagement>
@@ -297,10 +296,10 @@
 						<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
 						<useTestClasspath>false</useTestClasspath>
 					</configuration>
-					<!-- executions> <execution> <id>tomcat-run</id> <goals> <goal>run-war</goal> 
-						</goals> <phase>pre-integration-test</phase> <configuration> <fork>true</fork> 
-						</configuration> </execution> <execution> <id>tomcat-shutdown</id> <goals> 
-						<goal>shutdown</goal> </goals> <phase>post-integration-test</phase> </execution> 
+					<!-- executions> <execution> <id>tomcat-run</id> <goals> <goal>run-war</goal>
+						</goals> <phase>pre-integration-test</phase> <configuration> <fork>true</fork>
+						</configuration> </execution> <execution> <id>tomcat-shutdown</id> <goals>
+						<goal>shutdown</goal> </goals> <phase>post-integration-test</phase> </execution>
 						</executions -->
 				</plugin>
 			</plugins>
