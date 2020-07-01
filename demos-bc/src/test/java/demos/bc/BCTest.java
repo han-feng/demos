@@ -19,8 +19,8 @@ public class BCTest {
 	private void testBase64(String str) {
 		System.out.println("Test Base64: \"" + str + "\"");
 		byte[] data = str.getBytes();
-		String b64str = Base64.toBase64String(data);
-		System.out.println("[Hex] " + Hex.toHexString(data));
+		String b64str = new String(Base64.encode(data));
+		System.out.println("[Hex] " + new String(Hex.encode(data)));
 		System.out.println("[B64] " + b64str);
 		Assert.assertArrayEquals(data, Base64.decode(b64str));
 		System.out.println("OK!");
