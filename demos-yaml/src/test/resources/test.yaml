@@ -1,9 +1,9 @@
 # Maven 项目结构配置文件
 parent:
-  groupId: org.seeyou.demo
+  groupId: org.demo
   artifactId: gen-demo
   version: 0.1.0-SNAPSHOT
-  name: SeeYou Generator Demo
+  name: Generator Demo
   modules:
     - server
     - client
