@@ -21,7 +21,7 @@ import com.cvicse.refactor.util.StringRewriter;
 
 /**
  * "for -> forEache 重构工具"
- * 
+ *
  * @author han_feng
  *
  */
@@ -30,7 +30,7 @@ public class Refactor {
 	public static final Charset[] CHARSETS = { StandardCharsets.UTF_8, Charset.forName("GBK") };
 
 	private static CompilationUnit getAST(String source) {
-		ASTParser parser = ASTParser.newParser(AST.JLS11); // 设置Java语言规范版本
+		ASTParser parser = ASTParser.newParser(AST.getJLSLatest()); // 设置Java语言规范版本
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		parser.setResolveBindings(true);
 
@@ -62,7 +62,7 @@ public class Refactor {
 
 	/**
 	 * 对一个目录下的所有Java源文件进行重构.
-	 * 
+	 *
 	 * @param root 待扫描目录
 	 * @return
 	 */

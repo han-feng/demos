@@ -13,11 +13,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+// import org.junit.Test;
 
 /**
  * 测试HTTPS协议访问及Cookies管理
- * 
+ *
  * @author han_feng
  *
  */
@@ -26,7 +26,7 @@ public class HttpsURLConnectionTest {
     private static final Logger LOG = LogManager
             .getLogger(HttpsURLConnectionTest.class);
 
-    @Test
+    // @Test
     public void testCookie() throws IOException {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
