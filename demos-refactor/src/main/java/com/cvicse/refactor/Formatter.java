@@ -12,13 +12,13 @@ import org.eclipse.text.edits.TextEdit;
 
 /**
  * 代码格式化工具
- * 
+ *
  * @author han_feng
  *
  */
 public class Formatter {
 
-	private static CodeFormatter formatter;
+	private volatile static CodeFormatter formatter;
 
 	public static CodeFormatter getFormatter() {
 		if (formatter == null) {
