@@ -22,9 +22,26 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.graalvm.sdk</groupId>
+			<artifactId>graal-sdk</artifactId>
+			<version>22.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.graalvm.js</groupId>
+			<artifactId>js</artifactId>
+			<version>22.3.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.graalvm.js</groupId>
+			<artifactId>js-scriptengine</artifactId>
+			<version>22.3.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.jruby</groupId>
 			<artifactId>jruby</artifactId>
-			<version>9.1.7.0</version>
+			<version>9.3.9.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
